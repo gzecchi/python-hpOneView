@@ -469,10 +469,6 @@ class OneViewClientTest(unittest.TestCase):
     def test_interconnects_has_value(self):
         self.assertIsNotNone(self._oneview.interconnects)
 
-    def test_lazy_loading_interconnects(self):
-        interconnects = self._oneview.interconnects
-        self.assertEqual(interconnects, self._oneview.interconnects)
-
     def test_certificate_authority_has_right_type(self):
         self.assertIsInstance(self._oneview.certificate_authority, CertificateAuthority)
 

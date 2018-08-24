@@ -204,7 +204,7 @@ class Resource(object):
                                                                    view, fields, scope_uris)
         return uri
 
-    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', scope_uris=''):
+    def get_all(self, start=0, count=-1, filter='', query='', sort='', view='', fields='', uri=None, scope_uris=''):
         """
         Gets all items according with the given arguments.
 
@@ -239,6 +239,8 @@ class Resource(object):
             list: A list of items matching the specified filter.
         """
 
+        if not uri:
+            uri = self.URI
         uri = self.build_query_uri(start=start,
                                    count=count,
                                    filter=filter,
@@ -246,7 +248,7 @@ class Resource(object):
                                    sort=sort,
                                    view=view,
                                    fields=fields,
-                                   uri=self.URI,
+                                   uri=uri,
                                    scope_uris=scope_uris)
 
         logger.debug('Getting all resources with uri: {0}'.format(uri))
@@ -390,7 +392,7 @@ class Resource(object):
         return self.__get_members(response)
 
     @ensure_resource_client
-    def update_with_zero_body(self, path=None, timeout=-1, custom_headers=None):
+    def update_with_zero_body(self, uri, timeout=-1, custom_headers=None):
         """
         Makes a PUT request to update a resource when no request body is required.
 
@@ -404,13 +406,9 @@ class Resource(object):
         Returns:
             Updated resource.
         """
-        if path:
-            uri = '{}/{}'.format(self.URI, path)
-        else:
-            uri = self.data['uri']
-
+        if not uri:
+            uri = self.URI
         logger.debug('Update with zero length body (uri = %s)' % uri)
-
         return self.do_put(uri, None, timeout, custom_headers)
 
     @ensure_resource_client
@@ -465,9 +463,7 @@ class Resource(object):
         """
         patch_request_body = [{'op': operation, 'path': path, 'value': value}]
 
-        self.data = self._patch_request(body=patch_request_body,
-                                        timeout=timeout,
-                                        custom_headers=custom_headers)
+        self.data = self.patch_request(body=patch_request_body, timeout=timeout, custom_headers=custom_headers)
         return self
 
     @ensure_resource_client

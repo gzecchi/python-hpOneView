@@ -1,3 +1,13 @@
+# v5.0.0
+#### Notes
+Major release which supports breaking code changes which will support helper methods implementation
+
+#### Features supported with current release:
+- Interconnect
+
+#### Breaking changes
+Redesigned the resource module with base class Resource and its object will be used to instantiate OneView resource object (Ex, FC network) with support of all the common REST operations (create, delete, get, update) and some helper methods
+
 # 4.7.1
 #### Bug fixes
 - [#364] (https://github.com/HewlettPackard/python-hpOneView/issues/364) Bug in index_resources.get_all()
