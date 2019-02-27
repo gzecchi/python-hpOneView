@@ -35,4 +35,4 @@ setup(name='hpOneView',
       license='MIT',
       packages=find_packages(exclude=['examples*', 'tests*']),
       keywords=['oneview', 'hpe'],
-      install_requires=['future>=0.15.2'])
+      install_requires=['future>=0.15.2', 'six'])
