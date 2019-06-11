@@ -1,4 +1,58 @@
-# 4.8.0 (Unreleased)
+# 5.0.0
+#### Notes
+Extends support of the SDK to OneView Rest API version 800 (OneView v4.1).
+
+#### Major changes
+ 1. Extended support of SDK to API800.
+ 2. Designed a base class to keep all the common operations available for the resources.
+ 3. Introduced mixin classes to include the optional features of the resources.
+ 4. Resource data will be available with the resource object. This enhancement helps to
+  add helper methods and avoid passing uri/name to call the resource methods.
+
+#### Breaking
+  Enhancement made in this version breaks the previous version of the SDK.
+  Resource object should be created to call a resource method.
+
+  E.g.
+     Get an existing FC network or create one and use the
+       returned object to call the other methods.
+
+       oneview_client = OneViewClient(config)
+       fc_networks = oneview_client.fc_networks
+
+       fc_network = fc_networks.get_by_name(name) / create
+       fc_network.update(update_data)
+       fc_network.delete()
+
+  Refer example files of the updated resources for more details.
+
+#### Features supported with current release
+- Connection template
+- Enclosure
+- Enclosure group
+- Ethernet network
+- FC network
+- FCOE network
+- Interconnect type
+- Internal link set
+- Logical enclosure
+- Logical interconnect
+- Logical interconnect group
+- Logical switch group
+- Managed SAN
+- OS deployment plan
+- SAS interconnect
+- SAS interconnect type
+- SAS logical interconnect
+- SAS logical interconnect group
+- Server hardware
+- Server hardware type
+- Server profile
+- Server profile template
+- Switch type
+- Uplink set
+
+# 4.8.0
 #### Notes
 Added the capability to handle OneView Appliance SNMP Settings
 Extends support of the SDK to OneView Rest API version 800 (OneView v4.1).

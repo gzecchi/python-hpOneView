@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright (2012-2017) Hewlett Packard Enterprise Development LP
+# (C) Copyright (2012-2019) Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -391,10 +391,6 @@ class OneViewClientTest(unittest.TestCase):
     def test_fc_networks_has_value(self):
         self.assertIsNotNone(self._oneview.fc_networks)
 
-    def test_lazy_loading_fc_networks(self):
-        fcn = self._oneview.fc_networks
-        self.assertEqual(fcn, self._oneview.fc_networks)
-
     def test_connection_type(self):
         self.assertIsInstance(self._oneview.connection, connection)
 
@@ -422,9 +418,8 @@ class OneViewClientTest(unittest.TestCase):
         tasks = self._oneview.tasks
         self.assertEqual(tasks, self._oneview.tasks)
 
-    def test_lazy_loading_connection_templates(self):
-        connection_templates = self._oneview.connection_templates
-        self.assertEqual(connection_templates, self._oneview.connection_templates)
+    def test_should_return_new_connection_templates_obj(self):
+        self.assertNotEqual(self._oneview.connection_templates, self._oneview.connection_templates)
 
     def test_lazy_loading_switch_types(self):
         switch_types = self._oneview.switch_types
@@ -442,17 +437,12 @@ class OneViewClientTest(unittest.TestCase):
         metric = self._oneview.metric_streaming
         self.assertEqual(metric, self._oneview.metric_streaming)
 
-    def test_lazy_loading_enclosures(self):
-        enclosures = self._oneview.enclosures
-        self.assertEqual(enclosures, self._oneview.enclosures)
-
     def test_lazy_loading_switches(self):
         switches = self._oneview.switches
         self.assertEqual(switches, self._oneview.switches)
 
-    def test_lazy_loading_ethernet_networks(self):
-        ethernet_networks = self._oneview.ethernet_networks
-        self.assertEqual(ethernet_networks, self._oneview.ethernet_networks)
+    def test_should_return_new_ethernet_networks_obj(self):
+        self.assertNotEqual(self._oneview.ethernet_networks, self._oneview.ethernet_networks)
 
     def test_lazy_loading_server_hardware(self):
         server_hardware = self._oneview.server_hardware
@@ -558,9 +548,8 @@ class OneViewClientTest(unittest.TestCase):
         logical_enclosures = self._oneview.logical_enclosures
         self.assertEqual(logical_enclosures, self._oneview.logical_enclosures)
 
-    def test_lazy_loading_interconnect_types(self):
-        interconnect_types = self._oneview.interconnect_types
-        self.assertEqual(interconnect_types, self._oneview.interconnect_types)
+    def test_should_return_new_interconnect_types_obj(self):
+        self.assertNotEqual(self._oneview.interconnect_types, self._oneview.interconnect_types)
 
     def test_lazy_loading_logical_downlinks(self):
         logical_downlinks = self._oneview.logical_downlinks
@@ -652,9 +641,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_logical_switch_groups_has_value(self):
         self.assertIsNotNone(self._oneview.logical_switch_groups)
 
-    def test_lazy_loading_logical_switch_groups(self):
-        logical_switch_groups = self._oneview.logical_switch_groups
-        self.assertEqual(logical_switch_groups, self._oneview.logical_switch_groups)
+    def test_logical_switch_groups_return(self):
+        self.assertNotEqual(self._oneview.logical_switch_groups,
+                            self._oneview.logical_switch_groups)
 
     def test_logical_switches_has_right_type(self):
         self.assertIsInstance(self._oneview.logical_switches, LogicalSwitches)
@@ -669,9 +658,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_logical_interconnects_has_value(self):
         self.assertIsNotNone(self._oneview.logical_interconnects)
 
-    def test_lazy_loading_logical_interconnects(self):
-        logical_interconnects = self._oneview.logical_interconnects
-        self.assertEqual(logical_interconnects, self._oneview.logical_interconnects)
+    def test_logical_interconnects_return(self):
+        self.assertNotEqual(self._oneview.logical_interconnects,
+                            self._oneview.logical_interconnects)
 
     def test_sas_logical_interconnects_has_right_type(self):
         self.assertIsInstance(self._oneview.sas_logical_interconnects, SasLogicalInterconnects)
@@ -700,15 +689,14 @@ class OneViewClientTest(unittest.TestCase):
         storage_volume_attachments = self._oneview.storage_volume_attachments
         self.assertEqual(storage_volume_attachments, self._oneview.storage_volume_attachments)
 
+    def test_should_return_new_uplink_sets_obj(self):
+        self.assertNotEqual(self._oneview.uplink_sets, self._oneview.uplink_sets)
+
     def test_uplink_sets_has_right_type(self):
         self.assertIsInstance(self._oneview.uplink_sets, UplinkSets)
 
     def test_uplink_sets_has_value(self):
         self.assertIsNotNone(self._oneview.uplink_sets)
-
-    def test_lazy_loading_uplink_sets(self):
-        copy_uplink_sets = self._oneview.uplink_sets
-        self.assertEqual(copy_uplink_sets, self._oneview.uplink_sets)
 
     def test_backups_has_right_type(self):
         self.assertIsInstance(self._oneview.backups, Backups)
@@ -774,9 +762,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_server_profile_templates_has_value(self):
         self.assertIsNotNone(self._oneview.server_profile_templates)
 
-    def test_lazy_loading_server_profile_templates(self):
-        server_profile_templates = self._oneview.server_profile_templates
-        self.assertEqual(server_profile_templates, self._oneview.server_profile_templates)
+    def test_server_profile_templates_return(self):
+        self.assertNotEqual(self._oneview.server_profile_templates,
+                            self._oneview.server_profile_templates)
 
     def test_server_profiles_has_right_type(self):
         self.assertIsInstance(self._oneview.server_profiles, ServerProfiles)
@@ -784,9 +772,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_server_profiles_has_value(self):
         self.assertIsNotNone(self._oneview.server_profiles)
 
-    def test_lazy_loading_server_profiles(self):
-        server_profiles = self._oneview.server_profiles
-        self.assertEqual(server_profiles, self._oneview.server_profiles)
+    def test_server_profiles_return(self):
+        self.assertNotEqual(self._oneview.server_profiles,
+                            self._oneview.server_profiles)
 
     def test_datacenters_has_right_type(self):
         self.assertIsInstance(self._oneview.datacenters, Datacenters)
@@ -861,9 +849,9 @@ class OneViewClientTest(unittest.TestCase):
     def test_os_deployment_plans_has_right_type(self):
         self.assertIsInstance(self._oneview.os_deployment_plans, OsDeploymentPlans)
 
-    def test_lazy_loading_os_deployment_plans(self):
-        os_deployment_plans = self._oneview.os_deployment_plans
-        self.assertEqual(os_deployment_plans, self._oneview.os_deployment_plans)
+    def test_os_deployment_plans_return(self):
+        self.assertNotEqual(self._oneview.os_deployment_plans,
+                            self._oneview.os_deployment_plans)
 
     def test_os_deployment_servers_has_right_type(self):
         self.assertIsInstance(self._oneview.os_deployment_servers, OsDeploymentServers)

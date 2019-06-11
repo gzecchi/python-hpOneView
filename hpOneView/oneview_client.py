@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright (2012-2018) Hewlett Packard Enterprise Development LP
+# (C) Copyright (2012-2019) Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -336,10 +336,7 @@ class OneViewClient(object):
         Returns:
             ConnectionTemplates:
         """
-        if not self.__connection_templates:
-            self.__connection_templates = ConnectionTemplates(
-                self.__connection)
-        return self.__connection_templates
+        return ConnectionTemplates(self.__connection)
 
     @property
     def fc_networks(self):
@@ -349,9 +346,7 @@ class OneViewClient(object):
         Returns:
             FcNetworks:
         """
-        if not self.__fc_networks:
-            self.__fc_networks = FcNetworks(self.__connection)
-        return self.__fc_networks
+        return FcNetworks(self.__connection)
 
     @property
     def fcoe_networks(self):
@@ -373,9 +368,7 @@ class OneViewClient(object):
         Returns:
             EthernetNetworks:
         """
-        if not self.__ethernet_networks:
-            self.__ethernet_networks = EthernetNetworks(self.__connection)
-        return self.__ethernet_networks
+        return EthernetNetworks(self.__connection)
 
     @property
     def fabrics(self):
@@ -578,9 +571,7 @@ class OneViewClient(object):
         Returns:
             LogicalSwitchGroups:
         """
-        if not self.__logical_switch_groups:
-            self.__logical_switch_groups = LogicalSwitchGroups(self.__connection)
-        return self.__logical_switch_groups
+        return LogicalSwitchGroups(self.__connection)
 
     @property
     def logical_switches(self):
@@ -626,9 +617,7 @@ class OneViewClient(object):
         Returns:
             Enclosures:
         """
-        if not self.__enclosures:
-            self.__enclosures = Enclosures(self.__connection)
-        return self.__enclosures
+        return Enclosures(self.__connection)
 
     @property
     def logical_enclosures(self):
@@ -674,9 +663,7 @@ class OneViewClient(object):
         Returns:
             InterconnectTypes:
         """
-        if not self.__interconnect_types:
-            self.__interconnect_types = InterconnectTypes(self.__connection)
-        return self.__interconnect_types
+        return InterconnectTypes(self.__connection)
 
     @property
     def interconnect_link_topologies(self):
@@ -735,10 +722,7 @@ class OneViewClient(object):
         Returns:
             LogicalInterconnects:
         """
-        if not self.__logical_interconnects:
-            self.__logical_interconnects = LogicalInterconnects(
-                self.__connection)
-        return self.__logical_interconnects
+        return LogicalInterconnects(self.__connection)
 
     @property
     def sas_logical_interconnects(self):
@@ -833,9 +817,7 @@ class OneViewClient(object):
         Returns:
             ServerProfiles:
         """
-        if not self.__server_profiles:
-            self.__server_profiles = ServerProfiles(self.__connection)
-        return self.__server_profiles
+        return ServerProfiles(self.__connection)
 
     @property
     def server_profile_templates(self):
@@ -845,9 +827,7 @@ class OneViewClient(object):
         Returns:
             ServerProfileTemplate:
         """
-        if not self.__server_profile_templates:
-            self.__server_profile_templates = ServerProfileTemplate(self.__connection)
-        return self.__server_profile_templates
+        return ServerProfileTemplate(self.__connection)
 
     @property
     def storage_systems(self):
@@ -929,9 +909,7 @@ class OneViewClient(object):
         Returns:
             UplinkSets:
         """
-        if not self.__uplink_sets:
-            self.__uplink_sets = UplinkSets(self.__connection)
-        return self.__uplink_sets
+        return UplinkSets(self.__connection)
 
     @property
     def volumes(self):
@@ -1085,9 +1063,7 @@ class OneViewClient(object):
         Returns:
             OsDeploymentPlans:
         """
-        if not self.__os_deployment_plans:
-            self.__os_deployment_plans = OsDeploymentPlans(self.__connection)
-        return self.__os_deployment_plans
+        return OsDeploymentPlans(self.__connection)
 
     @property
     def os_deployment_servers(self):
